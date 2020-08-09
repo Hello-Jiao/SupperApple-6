@@ -65,7 +65,7 @@ function setup() {
     { x_pos: 1100, width: 100 },
     { x_pos: 1500, width: 100 }
   ];
-  game_score = 0;
+  game_score = 3;
 
   flagpole = {
     isReached: false, x_pos: 2000
@@ -106,6 +106,7 @@ function draw() {
   }
 
   renderFlagpole();
+  checkPlayerDie();
 
   pop();
   // Draw game character.
@@ -140,6 +141,7 @@ function draw() {
   }
   if (isFalling == true) {
     gameChar_y += 5;
+    
   }
 
   if (gameChar_y < floorPos_y) {
@@ -151,6 +153,8 @@ function draw() {
   if(flagpole.isReached == false){
     checkFlagpole();
   }
+
+  
   
 
   // Update real position of gameChar for collision detection.
@@ -347,8 +351,6 @@ function drawGameChar() {
     fill(255, 227, 206);
     stroke(65);
     strokeWeight(1);
-    //left arm
-    // rect(gameChar_x - 15, gameChar_y - 38, 4, 17);
     //right arm
     rect(gameChar_x - 4, gameChar_y - 38, 4, 17, 2);
   } else if (isFalling || isPlummeting) {
@@ -645,3 +647,11 @@ if( d < 15){
   flagpole.isReached = true;
 }
 }
+
+function checkPlayerDie(){
+  if(gameChar_y == floorPos_y + 5){
+    game_score -= 1
+    }
+  
+  }
+

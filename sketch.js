@@ -11,6 +11,7 @@ var mountains;
 var canyons;
 
 var game_score;
+var lives;
 var flagpole;
 
 var isLeft;
@@ -22,7 +23,8 @@ function setup() {
   createCanvas(1024, 576);
   floorPos_y = (height * 3) / 4;
   startGame();
-  game_score = 3;
+  game_score = 0;
+  lives = 3;
 }
 
 function draw() {
@@ -54,7 +56,8 @@ function draw() {
   noStroke();
   textSize(18)
   text("score: " + game_score, 20, 20);
-  if(game_score < 1){
+  text("lives: " + lives, 20, 50);
+  if(lives < 1){
     fill(255);
     noStroke();
     textSize(32)
@@ -494,7 +497,7 @@ if( d < 15){
 
 function checkPlayerDie(){
   if(gameChar_y == floorPos_y + 5){
-    game_score -= 1
+    lives -= 1
     }
     if(game_score > 0 && gameChar_y == floorPos_y + 500){
       startGame(); 

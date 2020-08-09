@@ -499,7 +499,7 @@ function checkPlayerDie(){
   if(gameChar_y == floorPos_y + 5){
     lives -= 1
     }
-    if(game_score > 0 && gameChar_y == floorPos_y + 500){
+    if(lives > 0 && gameChar_y == floorPos_y + 500){
       startGame(); 
     }
 }
